@@ -1,14 +1,44 @@
 // TODO: Declare any global variables we need
+let headCount= 0
+let tailCount= 0
 
+//TODO: refactor to use functions
 
 document.addEventListener('DOMContentLoaded', function () {
-    // This is just a sanity check to make sure your JavaScript script is getting loaded
-    // You can remove it once you see it in your browser console in the developer tools
-    console.log('Hi')
-
     // TODO: Add event listener and handler for flip and clear buttons
+    document.querySelector('#flip').addEventListener('click',function(e){
+        if (Math.random()> 0.5){
+            console.log('heads')
+            //update image
+            let pennyFace = document.querySelector('#pennyFace')
+            pennyFace.src = 'assets/images/penny-heads.jpg'
+            pennyFace.alt = '2005 Penny, heads side'
 
-    // Flip Button Click Handler
+            //Log outcome
+            document.querySelector('#message').textContent= 'You flipped heads!'
+
+            // update JS global vars
+            headCount++
+
+            // update Dom table
+            document.querySelector('#heads').textContent= headCount
+            document.querySelector('#heads-percent').textContent= Math.round(headCount/(headCount+tailCount)*100)+ '%'
+            document.querySelector('#tails-percent').textContent= Math.round(tailsCount/(headCount+tailCount)*100)+ '%'
+
+            //update head count and head percent
+            //update tails percent
+
+        } else {
+            console.log('tails')
+        }
+    })
+
+    document.querySelector('#clear').addEventListener('click',function(e){
+        console.log(Math.random())
+    })
+
+})
+   // Flip Button Click Handler
         // TODO: Determine flip outcome
         // TODO: Update image and status message in the DOM
 
@@ -23,5 +53,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // Clear Button Click Handler
         // TODO: Reset global variables to 0
         // TODO: Update the scoreboard (same logic as in flip button click handler)
-
-})
